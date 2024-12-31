@@ -60,11 +60,8 @@ SELECT *
 
 FROM interview
 
-WHERE person_id = (
-					SELECT id
-
-					FROM temp_table
-					);
+WHERE person_id = (SELECT id
+					FROM temp_table);
 
 
 /*Interesting! He was hired by a rich woman who is around 65" or 67" tall. She has red hair and a Tesla Model S car. She attended SQL Symphony Concert 3 times in December 2017.Who's that lady??*/
