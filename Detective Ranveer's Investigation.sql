@@ -24,7 +24,7 @@ WHERE (p.address_street_name LIKE '%Northwestern Dr%' AND p.address_number = (SE
 
 /*As per Morty's statement - The murderer had a "Get Fit Now Gym" Bag with membership number started with "48Z" which belongs to a Gold Member. The man got into a car with a plate that included "H42W"*/
 /*As per Annabel's interview - The killer was from the same gym as Annabel's and was seen working out last week on January 9th.*/
-/*Let's connect the dots. Next step is to find who has the gold membership with number started with "48Z" an whose number plate includes "H42W" and who checked in on January 9th*/
+/*Let's connect the dots. Next step is to find who has the gold membership with number started with "48Z" and whose number plate includes "H42W" and who checked in on January 9th*/
 
 DROP TABLE IF EXISTS temp_table;
 CREATE TEMP TABLE IF NOT EXISTS TEMP.temp_table AS
@@ -70,7 +70,6 @@ WHERE person_id = (SELECT id
 SELECT subq.id, subq.name, subq.height, subq.hair_color, subq.gender, subq.car_make, subq.car_model, subq.event_name, subq.date, count(subq.event_name) as event_count
 
 FROM (
-
 	SELECT p.id, p.name, dl.height, dl.hair_color, dl.gender, dl.car_model, dl.car_make, fb.*
 
 	FROM drivers_license as dl      
