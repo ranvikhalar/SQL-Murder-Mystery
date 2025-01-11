@@ -26,7 +26,7 @@ WHERE (p.address_street_name LIKE '%Northwestern Dr%' AND p.address_number = (SE
 /*As per Annabel's interview - The killer was from the same gym as Annabel's and was seen working out last week on January 9th.*/
 /*Let's connect the dots. Next step is to find who has the gold membership with number started with "48Z" and whose number plate includes "H42W" and who checked in on January 9th*/
 
-DROP TABLE IF EXISTS temp_table;
+DROP TABLE IF EXISTS TEMP.temp_table;
 CREATE TEMP TABLE IF NOT EXISTS TEMP.temp_table AS
 SELECT p.id, p.name, ci.membership_id, ci.check_in_date, gm.id, gm.membership_status
 
@@ -47,7 +47,7 @@ JOIN drivers_license as d
 WHERE ci.check_in_date = 20180109 AND gm.id LIKE '48Z%' AND gm.membership_status = 'gold'AND d.plate_number LIKE '%H42W%';
 
 SELECT *
-FROM temp_table;
+FROM Temp.temp_table;
 
 /*Jeremy Bowers is the Killer. Let's check if it's correct.*/
 INSERT INTO solution VALUES (1, 'Jeremy Bowers');
@@ -61,7 +61,7 @@ SELECT *
 FROM interview
 
 WHERE person_id = (SELECT id
-					FROM temp_table);
+					FROM Temp.temp_table);
 
 
 /*Interesting! He was hired by a rich woman who is around 65" or 67" tall. She has red hair and a Tesla Model S car. She attended SQL Symphony Concert 3 times in December 2017.Who's that lady??*/
